@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Store</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin: 20px;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Product Store</h1>
+    </header>
+    <div class="container" id="product-list">
+        <!-- Products will be dynamically loaded here -->
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+            fetch('https://api.example.com/products')
+                .then(response => response.json())
+                .then(data => {
+                    const productList = document.getElementById('product-list');
+                    data.forEach(product => {
+                        const productDiv = document.createElement('div');
+                        productDiv.className = 'product';
+                        productDiv.innerHTML = `
+                            <h2>${product.name}</h2>
+                            <p>${product.description}</p>
+                            <p>Price: $${product.price}</p>
+                        `;
+                        productList.appendChild(productDiv);
+                    });
+                })
+                .catch(error => console.error('Error fetching products:', error));
+        });
+</script>
+
+    <script src="main.js"></script>
+       
+    
+</body>
+</html>
