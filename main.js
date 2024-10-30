@@ -9,15 +9,18 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             const productList = document.getElementById('product-list');
             data.forEach(product => {
+                const { company, price, name } = product.fields;
+                const imageUrl = product.fields.image[0].url;
                 const productDiv = document.createElement('div');
                 productDiv.className = 'product';
                 productDiv.innerHTML = `
-                    <h2>${product.name}</h2>
-                    <p>${product.description}</p>
-                    <p>Price: $${product.price}</p>
+                    <img src="${imageUrl}" alt="${name}" style="width: 100px; height: 100px;">
+                    <h2>${name}</h2>
+                    <p>Company: ${company}</p>
+                    <p>Price: $${(price / 100).toFixed(2)}</p>
                 `;
                 productList.appendChild(productDiv);
             });
         })
-        .catch(error => console.error('Error fetching products:', error));
+        
 });
