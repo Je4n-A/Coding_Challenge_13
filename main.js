@@ -22,5 +22,5 @@ document.addEventListener('DOMContentLoaded', function() {
                 productList.appendChild(productDiv);
             });
         })
-        
+        .catch(error => console.error('Error fetching products:', error));
 });
