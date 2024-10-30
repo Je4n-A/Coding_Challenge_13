@@ -15,9 +15,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 productDiv.className = 'product';
                 productDiv.innerHTML = `
                     <img src="${imageUrl}" alt="${name}" style="width: 100px; height: 100px;">
+                <div>
                     <h2>${name}</h2>
                     <p>Company: ${company}</p>
                     <p>Price: $${(price / 100).toFixed(2)}</p>
+                <div>
                 `;
                 productList.appendChild(productDiv);
             });
