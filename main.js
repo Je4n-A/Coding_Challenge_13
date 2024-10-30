@@ -22,5 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 productList.appendChild(productDiv);
             });
         })
-        .catch(error => console.error('Error fetching products:', error));
+        .catch(error => {
+            console.error('Error fetching products:', error);
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '<p>Failed to load products. Please try again later.</p>';
+        });
 });
